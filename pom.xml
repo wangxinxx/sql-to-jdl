@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.4.RELEASE</version>
+        <version>2.1.7.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -22,10 +22,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <guava.version>27.1-jre</guava.version>
+        <guava.version>28.0-jre</guava.version>
 
         <skip.jooq.generation>false</skip.jooq.generation>
-        <database.url>jdbc:mysql://localhost:3306/</database.url>
+        <database.url>jdbc:mysql://localhost:3306/?serverTimezone=UTC</database.url>
+        <database.user>root</database.user>
+        <database.password></database.password>
 
         <!--<jacoco-plugin.version>0.7.9</jacoco-plugin.version>-->
         <!--<coveralls-plugin.version>4.3.0</coveralls-plugin.version>-->
@@ -58,7 +60,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.8.1</version>
+            <version>3.9</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -159,8 +161,8 @@
                     <jdbc>
                         <driver>com.mysql.cj.jdbc.Driver</driver>
                         <url>${database.url}</url>
-                        <user>root</user>
-                        <password></password>
+                        <user>${database.user}</user>
+                        <password>${database.password}</password>
                     </jdbc>
                     <generator>
                         <name>org.jooq.codegen.JavaGenerator</name>
